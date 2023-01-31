@@ -48,6 +48,7 @@
   $(".child-care-slider").owlCarousel({
     items: 1,
     loop: true,
+
     nav: true,
     dots: true,
     smartSpeed: 1500,
@@ -80,83 +81,6 @@
     },
   });
 
-  // Blog Js
-  $(".blog-slider").owlCarousel({
-    nav: true,
-    margin: 30,
-    loop: true,
-    dots: true,
-    autoplay: true,
-    autoplayHoverPause: true,
-    smartSpeed: 2000,
-    navText: [
-      "<i class='fa fa-angle-left'></i>",
-      "<i class='fa fa-angle-right'></i>",
-    ],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      650: {
-        items: 1,
-      },
-      768: {
-        items: 2,
-      },
-      992: {
-        items: 3,
-      },
-    },
-  });
-
-  // Logo Js
-  $(".logo-slider").owlCarousel({
-    nav: false,
-    margin: 30,
-    loop: true,
-    dots: false,
-    autoplay: true,
-    autoplayHoverPause: true,
-    smartSpeed: 2000,
-    responsive: {
-      0: {
-        items: 2,
-      },
-      650: {
-        items: 3,
-      },
-      992: {
-        items: 4,
-      },
-    },
-  });
-
-  // Blog Slider Js
-  $(".blog-slider-two").owlCarousel({
-    nav: true,
-    margin: 30,
-    loop: true,
-    dots: false,
-    autoplay: true,
-    autoplayHoverPause: true,
-    smartSpeed: 2000,
-    navText: [
-      "<i class='fa fa-angle-left'></i>",
-      "<i class='fa fa-angle-right'></i>",
-    ],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      768: {
-        items: 2,
-      },
-      992: {
-        items: 3,
-      },
-    },
-  });
-
   // Program Slider Js
   $(".program-slider").owlCarousel({
     nav: true,
@@ -182,38 +106,6 @@
       },
     },
   });
-
-  // Shop Details Slider Js
-  if ($(".shop-single-slider").length) {
-    $(".slider-for").slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: false,
-      fade: true,
-      asNavFor: ".slider-nav",
-    });
-    $(".slider-nav").slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      asNavFor: ".slider-for",
-      focusOnSelect: true,
-      responsive: [
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 2,
-            infinite: true,
-          },
-        },
-        {
-          breakpoint: 400,
-          settings: {
-            slidesToShow: 2,
-          },
-        },
-      ],
-    });
-  }
 
   // Related Slider Js
   $(".related-post-slider").owlCarousel({
@@ -242,18 +134,6 @@
         items: 4,
       },
     },
-  });
-
-  // Skill Bar Js
-  $(".bar").on("each", function () {
-    $(this)
-      .find(".bar-inner")
-      .animate(
-        {
-          width: $(this).attr("data-width"),
-        },
-        2000
-      );
   });
 
   // Testimonial Carousel
@@ -311,98 +191,6 @@
 
   // Wow Js
   new WOW().init();
-
-  //Searchbx
-  $('a[href=".search"]').on("click", function (event) {
-    event.preventDefault();
-    $(".search").addClass("open");
-    $('.search > form > input[type="search"]').focus();
-  });
-  $(".search, .search button.close").on("click keyup", function (event) {
-    if (
-      event.target == this ||
-      event.target.className == "close" ||
-      event.keyCode == 27
-    ) {
-      $(this).removeClass("open");
-    }
-  });
-  $("form").on("submit", function (event) {
-    event.preventDefault();
-    return false;
-  });
-
-  // FAQ JS
-  $(".faq-panel > .faq-title").on("click", function () {
-    if ($(this).hasClass("active")) {
-      $(this).removeClass("active");
-      $(this).siblings(".faq-textarea").slideUp(200);
-      $(".faq-panel > .faq-title i")
-        .removeClass("flaticon-down-arrow")
-        .addClass("flaticon-right-arrow");
-    } else {
-      $(".faq-panel > .faq-title i")
-        .removeClass("flaticon-down-arrow")
-        .addClass("flaticon-right-arrow");
-      $(this)
-        .find("i")
-        .removeClass("flaticon-right-arrow")
-        .addClass("flaticon-down-arrow");
-      $(".faq-panel > .faq-title").removeClass("active");
-      $(this).addClass("active");
-      $(".faq-textarea").slideUp(200);
-      $(this).siblings(".faq-textarea").slideDown(200);
-    }
-  });
-  var accordion = (function () {
-    var $accordion = $(".js-accordion");
-    var $accordion_header = $accordion.find(".js-accordion-header");
-    var $accordion_item = $(".js-accordion-item");
-    var settings = {
-      speed: 400,
-      oneOpen: false,
-    };
-    return {
-      init: function ($settings) {
-        $accordion_header.on("click", function () {
-          accordion.toggle($(this));
-        });
-        $.extend(settings, $settings);
-        if (settings.oneOpen && $(".js-accordion-item.active").length > 1) {
-          $(".js-accordion-item.active:not(:first)").removeClass("active");
-        }
-        $(".js-accordion-item.active").find("> .js-accordion-body").show();
-      },
-      toggle: function ($this) {
-        if (
-          settings.oneOpen &&
-          $this[0] !=
-            $this
-              .closest(".js-accordion")
-              .find("> .js-accordion-item.active > .js-accordion-header")[0]
-        ) {
-          $this
-            .closest(".js-accordion")
-            .find("> .js-accordion-item")
-            .removeClass("active")
-            .find(".js-accordion-body")
-            .slideUp();
-        }
-        $this.closest(".js-accordion-item").toggleClass("active");
-        $this.next().stop().slideToggle(settings.speed);
-      },
-    };
-  })();
-
-  // Slider Video Popup
-  $(".popup-youtube").magnificPopup({
-    disableOn: 700,
-    type: "iframe",
-    mainClass: "mfp-fade",
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
-  });
 
   //back to top
   $("body").append(
