@@ -48,7 +48,7 @@
   $(".child-care-slider").owlCarousel({
     items: 1,
     loop: true,
-
+    autoplay: true,
     nav: true,
     dots: true,
     smartSpeed: 1500,
@@ -83,6 +83,32 @@
 
   // Program Slider Js
   $(".program-slider").owlCarousel({
+    nav: true,
+    margin: 30,
+    loop: true,
+    dots: false,
+    autoplay: true,
+    autoplayHoverPause: true,
+    smartSpeed: 2000,
+    navText: [
+      "<i class='fa fa-angle-left'></i>",
+      "<i class='fa fa-angle-right'></i>",
+    ],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      1024: {
+        items: 3,
+      },
+    },
+  });
+
+  // Team Slider Js
+  $(".team-slider").owlCarousel({
     nav: true,
     margin: 30,
     loop: true,
@@ -191,6 +217,26 @@
 
   // Wow Js
   new WOW().init();
+
+  //Searchbx
+  $('a[href=".search"]').on("click", function (event) {
+    event.preventDefault();
+    $(".search").addClass("open");
+    $('.search > form > input[type="search"]').focus();
+  });
+  $(".search, .search button.close").on("click keyup", function (event) {
+    if (
+      event.target == this ||
+      event.target.className == "close" ||
+      event.keyCode == 27
+    ) {
+      $(this).removeClass("open");
+    }
+  });
+  $("form").on("submit", function (event) {
+    event.preventDefault();
+    return false;
+  });
 
   //back to top
   $("body").append(

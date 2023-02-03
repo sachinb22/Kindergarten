@@ -93,7 +93,7 @@
               jQuery(".mean-container").prepend(
                 '<div class="mean-bar"><a href="#nav" class="meanmenu-reveal" style="' +
                   e +
-                  '">Show Navigation</a><nav class="mean-nav"> <button class=" btn">Enroll Now</button> </nav>  </div>'
+                  '">Show Navigation</a><nav class="mean-nav">  </nav>  </div>'
               );
             var r = jQuery(n).html();
             jQuery(".mean-nav").html(r),
